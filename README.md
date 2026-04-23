@@ -2,7 +2,7 @@
 
 Локальный репозиторий RFC и ADR документов, синхронизированных из Confluence ([RFCs](https://bz.incdb.team/display/DOCS/RFCs?src=contextnavpagetreemode), [ADR's](https://bz.incdb.team/display/DOCS/ADR%27s?src=contextnavpagetreemode)).
 
-**Дата синхронизации:** 2026-04-22
+**Дата синхронизации:** 2026-04-23
 
 ---
 
@@ -33,6 +33,7 @@
 | [ADR-0005](adrs/ADR-0005.md) | LLM Gateway MVP на внешнем VPS | Accepted |
 | [ADR-0006](adrs/ADR-0006.md) | Интеграция Greptile в корпоративный GitLab (пилот) | Superseded |
 | [ADR-0007](adrs/ADR-0007.md) | Собственный AI code-reviewer на Claude Agent SDK | Implemented |
+| [ADR-0008](adrs/ADR-0008.md) | Интеграция Pyrus и 1С через n8n | Accepted |
 
 ## Связи между документами
 
@@ -48,16 +49,24 @@ RFC-0006 → ADR-0006 (Greptile пилот) ──[superseded by]──► RFC-0
 
 RFC-0007 → ADR-0005 (LLM Gateway)
 
-RFC-0008 ──► RFC-0011 (Pyrus + 1С интеграции)
+RFC-0008 ──► RFC-0011 → ADR-0008 (Pyrus + 1С интеграции)
 ```
 
 ## Структура
 
 ```
 architecture-decisions/
+├── .claude/
+│   └── skills/
+│       └── adr-governor/
+│           ├── SKILL.md
+│           └── scripts/
+│               └── extract_adr.py
 ├── README.md
+├── templates/
+│   └── adr-template.md
 ├── rfcs/
 │   ├── RFC-0001.md  — RFC-0011.md
 └── adrs/
-    ├── ADR-0001.md  — ADR-0007.md
+    ├── ADR-0001.md  — ADR-0008.md
 ```
