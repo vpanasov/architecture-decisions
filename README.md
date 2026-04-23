@@ -61,7 +61,7 @@ architecture-decisions/
 │       └── adr-governor/
 │           ├── SKILL.md
 │           └── scripts/
-│               └── extract_adr.py
+│               └── extract_rfc.py
 ├── README.md
 ├── templates/
 │   └── adr-template.md
