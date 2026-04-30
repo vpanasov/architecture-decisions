@@ -2,7 +2,7 @@
 
 Локальный репозиторий RFC и ADR документов, синхронизированных из Confluence ([RFCs](https://bz.incdb.team/display/DOCS/RFCs?src=contextnavpagetreemode), [ADR's](https://bz.incdb.team/display/DOCS/ADR%27s?src=contextnavpagetreemode)).
 
-**Дата синхронизации:** 2026-04-23
+**Дата синхронизации:** 2026-04-30
 
 ---
 
@@ -10,46 +10,37 @@
 
 | # | Название | Статус |
 |---|---------|--------|
-| [RFC-0001](rfcs/RFC-0001.md) | Подход к реализации единого продуктового портфеля | DRAFT |
-| [RFC-0002](rfcs/RFC-0002.md) | Global Merchant Portal — объединение Fortis и LP на базе единой модульной архитектуры | APPROVED |
-| [RFC-0003](rfcs/RFC-0003.md) | AI Sales Dashboard — Claude Code чат с аналитическими скилами | Revise |
-| [RFC-0004](rfcs/RFC-0004.md) | Автодозвон LifePay — MVP автоматизации исходящих звонков | Approved с замечаниями |
-| [RFC-0005](rfcs/RFC-0005.md) | Ontology Service — корпоративная база знаний с AI-агрегацией | Approved с замечаниями |
-| [RFC-0006](rfcs/RFC-0006.md) | Интеграция Greptile в корпоративный GitLab — пилот 14 дней | APPROVED |
-| [RFC-0007](rfcs/RFC-0007.md) | Корпоративный LLM Gateway — архитектурное решение (MVP) | На рассмотрении архкома |
-| [RFC-0008](rfcs/RFC-0008.md) | Интеграция Pyrus с 1С и HR-link для кадровых документов | Draft |
-| [RFC-0009](rfcs/RFC-0009.md) | Unified Mobile POS — объединение retail-app и fortis-pos-app | DRAFT |
-| [RFC-0010](rfcs/RFC-0010.md) | Собственный AI code-reviewer на Claude Agent SDK для Fortis GitLab | DRAFT |
-| [RFC-0011](rfcs/RFC-0011.md) | Интеграция Pyrus и 1С через n8n | APPROVED |
+| [RFC-0001](https://bz.incdb.team/pages/viewpage.action?pageId=3411542161) | Подход к реализации единого продуктового портфеля | DRAFT |
+| [RFC-0002](https://bz.incdb.team/pages/viewpage.action?pageId=3413606406) | Global Merchant Portal — объединение Fortis и LP на базе единой модульной архитектуры | APPROVED |
+| [RFC-0008](https://bz.incdb.team/pages/viewpage.action?pageId=3419832738) | Интеграция Pyrus с 1С и HR-link для кадровых документов | IN REVIEW |
+| [RFC-0009](https://bz.incdb.team/pages/viewpage.action?pageId=3419832833) | Unified Mobile POS — объединение retail-app и fortis-pos-app | DRAFT |
+| [RFC-0010](https://bz.incdb.team/pages/viewpage.action?pageId=3420619494) | Собственный AI code-reviewer на Claude Agent SDK для Fortis GitLab | IN REVIEW |
+| [RFC-0011](https://bz.incdb.team/pages/viewpage.action?pageId=3421831337) | Интеграция Pyrus и 1С через n8n | APPROVED |
+| [RFC-0012](https://bz.incdb.team/pages/viewpage.action?pageId=3421831711) | Интеграция Pyrus и Correct для распознавания документов | APPROVED |
+| [RFC-0013](https://bz.incdb.team/pages/viewpage.action?pageId=3423764705) | Взаимный кросс-мониторинг ключевых эндпоинтов между AWS и Yandex Cloud | REVISE |
 
 ## ADRs (Architecture Decision Records)
 
 | # | Название | Статус |
 |---|---------|--------|
-| [ADR-0001](adrs/ADR-0001.md) | Выбор подхода к созданию глобального ИТ-продукта | Draft |
-| [ADR-0002](adrs/ADR-0002.md) | Выбор подхода к проектированию ядра платформы | Draft |
-| [ADR-0003](adrs/ADR-0003.md) | Складской и логистический контур — вне AdminArea | Draft |
-| [ADR-0004](adrs/ADR-0004.md) | Global Merchant Portal — объединение Fortis и LP | Accepted |
-| [ADR-0005](adrs/ADR-0005.md) | LLM Gateway MVP на внешнем VPS | Accepted |
-| [ADR-0006](adrs/ADR-0006.md) | Интеграция Greptile в корпоративный GitLab (пилот) | Superseded |
-| [ADR-0007](adrs/ADR-0007.md) | Собственный AI code-reviewer на Claude Agent SDK | Implemented |
-| [ADR-0008](adrs/ADR-0008.md) | Интеграция Pyrus и 1С через n8n | Accepted |
+| [ADR-0004](https://bz.incdb.team/pages/viewpage.action?pageId=3413606413) | Global Merchant Portal — объединение Fortis и LP | Accepted |
+| [ADR-0007](https://bz.incdb.team/pages/viewpage.action?pageId=3420619495) | Собственный AI code-reviewer на Claude Agent SDK | Implemented |
+| [ADR-0008](https://bz.incdb.team/pages/viewpage.action?pageId=3422421227) | Интеграция Pyrus и 1С через n8n | ACCEPTED |
+| [ADR-0009](https://bz.incdb.team/pages/viewpage.action?pageId=3424485731) | Интеграция Pyrus и Correct для распознавания документов | Accepted |
 
 ## Связи между документами
 
 ```
 RFC-0001 (единый продуктовый портфель)
-├── ADR-0001 (подход к глобальному продукту)
-│   └── ADR-0002 (проектирование ядра платформы)
-│       └── ADR-0003 (склад вне AdminArea)
 ├── RFC-0002 → ADR-0004 (Global Merchant Portal)
 └── RFC-0009 (Unified Mobile POS)
 
-RFC-0006 → ADR-0006 (Greptile пилот) ──[superseded by]──► RFC-0010 → ADR-0007 (собственный AI code-reviewer)
-
-RFC-0007 → ADR-0005 (LLM Gateway)
+RFC-0010 → ADR-0007 (собственный AI code-reviewer)
 
 RFC-0008 ──► RFC-0011 → ADR-0008 (Pyrus + 1С интеграции)
+                         RFC-0012 → ADR-0009 (Pyrus + Correct распознавание документов)
+
+RFC-0013 (кросс-мониторинг AWS ↔ YC)
 ```
 
 ## Структура
@@ -66,7 +57,8 @@ architecture-decisions/
 ├── templates/
 │   └── adr-template.md
 ├── rfcs/
-│   ├── RFC-0001.md  — RFC-0011.md
+│   ├── RFC-0001.md  — RFC-0013.md
+│   └── images/
 └── adrs/
-    ├── ADR-0001.md  — ADR-0008.md
+    ├── ADR-0004.md, ADR-0007.md — ADR-0009.md
 ```
