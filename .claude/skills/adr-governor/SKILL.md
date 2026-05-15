@@ -6,12 +6,13 @@
 ## How it works
 1. Read RFC-XXXX from https://bz.incdb.team/display/DOCS/RFCs
 2. Check RFC-XXXX status = Approved. If not, abort with a message.
-3. Determine ADR-XXXX number: max(existing ADRs) + 1.
-4. Run scripts/extract_rfc.py:
+3. Save RFC-XXXX content to rfcs/RFC-XXXX.md (with attached images to rfcs/images/)
+4. Determine ADR-XXXX number: max(existing ADRs) + 1.
+5. Run scripts/extract_rfc.py:
 	- Extract from RFC-XXXX: title, context, decision, alternatives, consequences, tech debt
-5. Generate ADR-XXXX using the template templates/adr-template.md
+6. Generate ADR-XXXX using the template templates/adr-template.md
   - Set ADR-XXXX Status = Accepted
-6. Write ADR-XXXX to adrs/ADR-XXXX-<name>.md
+7. Write ADR-XXXX to adrs/ADR-XXXX-<name>.md
 
 ## Scripts
 - extract_rfc.py: Extract data from RFC-XXXX (outputs JSON to stdout)
