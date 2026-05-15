@@ -8,7 +8,7 @@ Usage:
 Steps:
 1. Reads the specified RFC from rfcs/RFC-XXXX.md
 2. Checks RFC status = Approved
-3. Extracts: title, context, decision, alternatives, consequences, tech debt
+3. Extracts: title, context, decision, alternatives, consequences, tech debt, metrics
 4. Outputs the result to stdout as JSON for the agent
 """
 
@@ -60,21 +60,39 @@ def extract_title(rfc_text: str) -> str:
 
 
 def extract_section(rfc_text: str, heading: str) -> str:
-    """Extract section text by heading (ATX ## or Setext ---)."""
-    lines = rfc_text.splitlines()
-    start = None
-    heading_lower = heading.lower()
+    """Extract section text by heading (ATX ## or Setext ---).
 
-    for i, line in enumerate(lines):
-        if re.match(r"^#{1,6}\s+", line) and heading_lower in line.lower():
-            start = i + 1
-            break
-        if (
-            heading_lower in line.lower()
-            and i + 1 < len(lines)
-            and re.match(r"^-{2,}\s*$", lines[i + 1])
-        ):
-            start = i + 2
+    Two-pass matching: exact match first, then substring.
+    Stops at the next heading of the same or higher level.
+    """
+    lines = rfc_text.splitlines()
+    heading_lower = heading.lower()
+    start = None
+    matched_level = None
+
+    for exact in [True, False]:
+        for i, line in enumerate(lines):
+            atx = re.match(r"^(#{1,6})\s+(.+)", line)
+            if atx:
+                level = len(atx.group(1))
+                text = atx.group(2).strip().lower()
+                match = (text == heading_lower) if exact else (heading_lower in text)
+                if match:
+                    start = i + 1
+                    matched_level = level
+                    break
+            if (
+                i + 1 < len(lines)
+                and re.match(r"^-{2,}\s*$", lines[i + 1])
+                and line.strip()
+            ):
+                text = line.strip().lower()
+                match = (text == heading_lower) if exact else (heading_lower in text)
+                if match:
+                    start = i + 2
+                    matched_level = 2
+                    break
+        if start is not None:
             break
 
     if start is None:
@@ -83,7 +101,8 @@ def extract_section(rfc_text: str, heading: str) -> str:
     result_lines = []
     for j in range(start, len(lines)):
         line = lines[j]
-        if re.match(r"^#{1,2}\s+", line):
+        atx = re.match(r"^(#{1,6})\s+", line)
+        if atx and len(atx.group(1)) <= matched_level:
             break
         if (
             j + 1 < len(lines)
@@ -140,6 +159,10 @@ def main():
         "tech_debt": extract_field(
             rfc_text,
             ["Технический долг"],
+        ),
+        "metrics": extract_field(
+            rfc_text,
+            ["Метрики успеха", "Метрики"],
         ),
     }
 
