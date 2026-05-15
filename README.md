@@ -2,7 +2,7 @@
 
 Локальный репозиторий RFC и ADR документов, синхронизированных из Confluence ([RFCs](https://bz.incdb.team/display/DOCS/RFCs?src=contextnavpagetreemode), [ADR's](https://bz.incdb.team/display/DOCS/ADR%27s?src=contextnavpagetreemode)).
 
-**Дата синхронизации:** 2026-04-30
+**Дата синхронизации:** 2026-05-15
 
 ---
 
@@ -18,6 +18,7 @@
 | [RFC-0011](https://bz.incdb.team/pages/viewpage.action?pageId=3421831337) | Интеграция Pyrus и 1С через n8n | APPROVED |
 | [RFC-0012](https://bz.incdb.team/pages/viewpage.action?pageId=3421831711) | Интеграция Pyrus и Correct для распознавания документов | APPROVED |
 | [RFC-0013](https://bz.incdb.team/pages/viewpage.action?pageId=3423764705) | Взаимный кросс-мониторинг ключевых эндпоинтов между AWS и Yandex Cloud | REVISE |
+| [RFC-0014](https://bz.incdb.team/pages/viewpage.action?pageId=3425697999) | Device2Host интеграция с вендором процессинга | APPROVED |
 
 ## ADRs (Architecture Decision Records)
 
@@ -27,6 +28,7 @@
 | [ADR-0007](https://bz.incdb.team/pages/viewpage.action?pageId=3420619495) | Собственный AI code-reviewer на Claude Agent SDK | Implemented |
 | [ADR-0008](https://bz.incdb.team/pages/viewpage.action?pageId=3422421227) | Интеграция Pyrus и 1С через n8n | ACCEPTED |
 | [ADR-0009](https://bz.incdb.team/pages/viewpage.action?pageId=3424485731) | Интеграция Pyrus и Correct для распознавания документов | Accepted |
+| [ADR-0010](adrs/ADR-0010.md) | Device2Host интеграция с вендором процессинга | Accepted |
 
 ## Связи между документами
 
@@ -41,6 +43,8 @@ RFC-0008 ──► RFC-0011 → ADR-0008 (Pyrus + 1С интеграции)
                          RFC-0012 → ADR-0009 (Pyrus + Correct распознавание документов)
 
 RFC-0013 (кросс-мониторинг AWS ↔ YC)
+
+RFC-0014 → ADR-0010 (Device2Host интеграция с VaultsPay)
 ```
 
 ## Структура
@@ -49,16 +53,20 @@ RFC-0013 (кросс-мониторинг AWS ↔ YC)
 architecture-decisions/
 ├── .claude/
 │   └── skills/
-│       └── adr-governor/
-│           ├── SKILL.md
-│           └── scripts/
-│               └── extract_rfc.py
+│       ├── adr-governor/
+│       │   ├── SKILL.md
+│       │   └── scripts/
+│       │       └── extract_rfc.py
+│       └── rfc-validator/
+│           └── SKILL.md
 ├── README.md
 ├── templates/
 │   └── adr-template.md
 ├── rfcs/
-│   ├── RFC-0001.md  — RFC-0013.md
+│   ├── RFC-0001.md  — RFC-0014.md
 │   └── images/
-└── adrs/
-    ├── ADR-0004.md, ADR-0007.md — ADR-0009.md
+├── adrs/
+│   ├── ADR-0004.md, ADR-0007.md — ADR-0010.md
+└── validate/
+    └── report-rfc-XXXX.md
 ```
