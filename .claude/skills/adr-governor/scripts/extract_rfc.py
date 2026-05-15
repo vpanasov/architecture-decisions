@@ -1,39 +1,38 @@
 #!/usr/bin/env python3
 """
-extract_adr.py — Извлечение данных из RFC для генерации ADR.
+extract_rfc.py — Extract data from an RFC to generate an ADR.
 
-Использование:
-    python extract_adr.py RFC-0011
+Usage:
+    python extract_rfc.py RFC-0011
 
-Скрипт:
-1. Читает указанный RFC из rfcs/RFC-XXXX.md
-2. Проверяет статус RFC = Approved
-3. Извлекает: название, контекст, решение, альтернативы, последствия
-4. Выводит результат в stdout как JSON для агента
+Steps:
+1. Reads the specified RFC from rfcs/RFC-XXXX.md
+2. Checks RFC status = Approved
+3. Extracts: title, context, decision, alternatives, consequences, tech debt
+4. Outputs the result to stdout as JSON for the agent
 """
 
 import argparse
 import json
-import os
 import re
 import sys
 from pathlib import Path
 
-# Корень репозитория — 4 уровня вверх от scripts/
+# Repository root — 4 levels up from scripts/
 REPO_ROOT = Path(__file__).resolve().parents[4]
 RFCS_DIR = REPO_ROOT / "rfcs"
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Извлечение данных из RFC")
-    parser.add_argument("rfc", help="Номер RFC, например RFC-0011")
+    parser = argparse.ArgumentParser(description="Extract data from RFC")
+    parser.add_argument("rfc", help="RFC number, e.g. RFC-0011")
     return parser.parse_args()
 
 
 def read_rfc(rfc_id: str) -> str:
     path = RFCS_DIR / f"{rfc_id}.md"
     if not path.exists():
-        print(json.dumps({"error": f"Файл {path} не найден."}), file=sys.stdout)
+        print(json.dumps({"error": f"File {path} not found."}), file=sys.stdout)
         sys.exit(1)
     return path.read_text(encoding="utf-8")
 
@@ -41,13 +40,13 @@ def read_rfc(rfc_id: str) -> str:
 def check_status(rfc_text: str, rfc_id: str) -> str:
     m = re.search(r"\*\*Статус:\*\*\s*(.+)", rfc_text)
     if not m:
-        print(json.dumps({"error": f"Не удалось определить статус {rfc_id}."}), file=sys.stdout)
+        print(json.dumps({"error": f"Could not determine status of {rfc_id}."}), file=sys.stdout)
         sys.exit(1)
     status = m.group(1).strip()
     if "approved" not in status.lower():
         print(
             json.dumps({
-                "error": f"{rfc_id} имеет статус «{status}». ADR можно генерировать только из RFC со статусом Approved."
+                "error": f"{rfc_id} has status '{status}'. ADR can only be generated from an RFC with Approved status."
             }),
             file=sys.stdout,
         )
@@ -57,11 +56,11 @@ def check_status(rfc_text: str, rfc_id: str) -> str:
 
 def extract_title(rfc_text: str) -> str:
     m = re.match(r"#\s*RFC-\d+:\s*(.+)", rfc_text)
-    return m.group(1).strip() if m else "Без названия"
+    return m.group(1).strip() if m else "Untitled"
 
 
 def extract_section(rfc_text: str, heading: str) -> str:
-    """Извлекает текст секции по заголовку (ATX ## или Setext ---)."""
+    """Extract section text by heading (ATX ## or Setext ---)."""
     lines = rfc_text.splitlines()
     start = None
     heading_lower = heading.lower()
@@ -113,7 +112,7 @@ def main():
     rfc_id = args.rfc.upper()
 
     if not re.match(r"^RFC-\d{4}$", rfc_id):
-        print(json.dumps({"error": "Формат: RFC-XXXX (например RFC-0011)"}), file=sys.stdout)
+        print(json.dumps({"error": "Format: RFC-XXXX (e.g. RFC-0011)"}), file=sys.stdout)
         sys.exit(1)
 
     rfc_text = read_rfc(rfc_id)
@@ -123,7 +122,7 @@ def main():
         "rfc_id": rfc_id,
         "title": extract_title(rfc_text),
         "context": extract_field(rfc_text, ["Проблема и контекст", "Проблема", "Контекст"]),
-        "solution": extract_field(
+        "decision": extract_field(
             rfc_text,
             ["Предлагаемое решение", "Решение", "Предлагаемое решение (1 параграф + схемы)"],
         ),
@@ -133,12 +132,14 @@ def main():
         "consequences": extract_field(
             rfc_text,
             [
-                "Компромиссы / Технический долг",
                 "Компромиссы",
-                "Технический долг",
                 "Последствия",
                 "Риски",
             ],
+        ),
+        "tech_debt": extract_field(
+            rfc_text,
+            ["Технический долг"],
         ),
     }
 

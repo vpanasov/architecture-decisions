@@ -8,7 +8,7 @@
 2. Check RFC-XXXX status = Approved. If not, abort with a message.
 3. Determine ADR-XXXX number: max(existing ADRs) + 1.
 4. Run scripts/extract_rfc.py:
-	- Extract from RFC-XXXX: context, decision, alternatives, consequences, tech debt
+	- Extract from RFC-XXXX: title, context, decision, alternatives, consequences, tech debt
 5. Generate ADR-XXXX using the template templates/adr-template.md
   - Set ADR-XXXX Status = Accepted
 6. Write ADR-XXXX to adrs/ADR-XXXX-<name>.md
