@@ -2,7 +2,7 @@
 
 Локальный репозиторий RFC и ADR документов, синхронизированных из Confluence ([RFCs](https://bz.incdb.team/display/DOCS/RFCs?src=contextnavpagetreemode), [ADR's](https://bz.incdb.team/display/DOCS/ADR%27s?src=contextnavpagetreemode)).
 
-**Дата синхронизации:** 2026-05-15
+**Дата синхронизации:** 2026-06-29
 
 ---
 
@@ -19,6 +19,7 @@
 | [RFC-0012](https://bz.incdb.team/pages/viewpage.action?pageId=3421831711) | Интеграция Pyrus и Correct для распознавания документов | APPROVED |
 | [RFC-0013](https://bz.incdb.team/pages/viewpage.action?pageId=3423764705) | Взаимный кросс-мониторинг ключевых эндпоинтов между AWS и Yandex Cloud | REVISE |
 | [RFC-0014](https://bz.incdb.team/pages/viewpage.action?pageId=3425697999) | Device2Host интеграция с вендором процессинга | APPROVED |
+| [RFC-0016](https://bz.incdb.team/pages/viewpage.action?pageId=3438543020) | rf bypass – gateway доступа к зарубежным ресурсам, заблокированным по GeoIP | APPROVED |
 
 ## ADRs (Architecture Decision Records)
 
@@ -28,7 +29,8 @@
 | [ADR-0007](https://bz.incdb.team/pages/viewpage.action?pageId=3420619495) | Собственный AI code-reviewer на Claude Agent SDK | Implemented |
 | [ADR-0008](https://bz.incdb.team/pages/viewpage.action?pageId=3422421227) | Интеграция Pyrus и 1С через n8n | ACCEPTED |
 | [ADR-0009](https://bz.incdb.team/pages/viewpage.action?pageId=3424485731) | Интеграция Pyrus и Correct для распознавания документов | Accepted |
-| [ADR-0010](adrs/ADR-0010.md) | Device2Host интеграция с вендором процессинга | Accepted |
+| [ADR-0010](https://bz.incdb.team/pages/viewpage.action?pageId=3429498897) | Device2Host интеграция с вендором процессинга | Accepted |
+| [ADR-0011](https://bz.incdb.team/pages/viewpage.action?pageId=3442704420) | rf bypass – gateway доступа к зарубежным ресурсам, заблокированным по GeoIP | Implemented |
 
 ## Связи между документами
 
@@ -45,6 +47,8 @@ RFC-0008 ──► RFC-0011 → ADR-0008 (Pyrus + 1С интеграции)
 RFC-0013 (кросс-мониторинг AWS ↔ YC)
 
 RFC-0014 → ADR-0010 (Device2Host интеграция с VaultsPay)
+
+RFC-0016 → ADR-0011 (rf bypass – gateway GeoIP)
 ```
 
 ## Структура
@@ -63,10 +67,10 @@ architecture-decisions/
 ├── templates/
 │   └── adr-template.md
 ├── rfcs/
-│   ├── RFC-0001.md  — RFC-0014.md
+│   ├── RFC-0001.md  — RFC-0016.md
 │   └── images/
 ├── adrs/
-│   ├── ADR-0004.md, ADR-0007.md — ADR-0010.md
+│   ├── ADR-0004.md, ADR-0007.md — ADR-0011.md
 └── validate/
     └── report-rfc-XXXX.md
 ```
