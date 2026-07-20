@@ -20,6 +20,7 @@
 | [RFC-0013](https://bz.incdb.team/pages/viewpage.action?pageId=3423764705) | Взаимный кросс-мониторинг ключевых эндпоинтов между AWS и Yandex Cloud | REVISE |
 | [RFC-0014](https://bz.incdb.team/pages/viewpage.action?pageId=3425697999) | Device2Host интеграция с вендором процессинга | APPROVED |
 | [RFC-0016](https://bz.incdb.team/pages/viewpage.action?pageId=3438543020) | rf bypass – gateway доступа к зарубежным ресурсам, заблокированным по GeoIP | APPROVED |
+| [RFC-0018](https://bz.incdb.team/pages/viewpage.action?pageId=3442704389) | Корпоративный LLM Gateway — вывод в Production на платформе PSP Life Pay | APPROVED |
 
 ## ADRs (Architecture Decision Records)
 
@@ -31,6 +32,7 @@
 | [ADR-0009](https://bz.incdb.team/pages/viewpage.action?pageId=3424485731) | Интеграция Pyrus и Correct для распознавания документов | Accepted |
 | [ADR-0010](https://bz.incdb.team/pages/viewpage.action?pageId=3429498897) | Device2Host интеграция с вендором процессинга | Accepted |
 | [ADR-0011](https://bz.incdb.team/pages/viewpage.action?pageId=3442704420) | rf bypass – gateway доступа к зарубежным ресурсам, заблокированным по GeoIP | Implemented |
+| ADR-0012 | Корпоративный LLM Gateway — вывод в Production на платформе PSP Life Pay | Accepted |
 
 ## Связи между документами
 
@@ -49,6 +51,8 @@ RFC-0013 (кросс-мониторинг AWS ↔ YC)
 RFC-0014 → ADR-0010 (Device2Host интеграция с VaultsPay)
 
 RFC-0016 → ADR-0011 (rf bypass – gateway GeoIP)
+
+RFC-0018 → ADR-0012 (Корпоративный LLM Gateway — Production на PSP-Cloud)
 ```
 
 ## Структура
