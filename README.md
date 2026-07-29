@@ -21,6 +21,7 @@
 | [RFC-0014](https://bz.incdb.team/pages/viewpage.action?pageId=3425697999) | Device2Host интеграция с вендором процессинга | APPROVED |
 | [RFC-0016](https://bz.incdb.team/pages/viewpage.action?pageId=3438543020) | rf bypass – gateway доступа к зарубежным ресурсам, заблокированным по GeoIP | APPROVED |
 | [RFC-0018](https://bz.incdb.team/pages/viewpage.action?pageId=3442704389) | Корпоративный LLM Gateway — вывод в Production на платформе PSP Life Pay | APPROVED |
+| [RFC-0020](https://bz.incdb.team/pages/viewpage.action?pageId=3445883026) | Аутентификация Global Platform | APPROVED |
 
 ## ADRs (Architecture Decision Records)
 
@@ -33,6 +34,7 @@
 | [ADR-0010](https://bz.incdb.team/pages/viewpage.action?pageId=3429498897) | Device2Host интеграция с вендором процессинга | Accepted |
 | [ADR-0011](https://bz.incdb.team/pages/viewpage.action?pageId=3442704420) | rf bypass – gateway доступа к зарубежным ресурсам, заблокированным по GeoIP | Implemented |
 | [ADR-0012](https://bz.incdb.team/pages/viewpage.action?pageId=3448995848) | Корпоративный LLM Gateway — вывод в Production на платформе PSP Life Pay | Accepted |
+| [ADR-0013](adrs/ADR-0013.md) | Аутентификация Global Platform | Accepted |
 
 ## Связи между документами
 
@@ -53,6 +55,8 @@ RFC-0014 → ADR-0010 (Device2Host интеграция с VaultsPay)
 RFC-0016 → ADR-0011 (rf bypass – gateway GeoIP)
 
 RFC-0018 → ADR-0012 (Корпоративный LLM Gateway — Production на PSP-Cloud)
+
+RFC-0020 → ADR-0013 (Аутентификация Global Platform — Keycloak как чистый IdP)
 ```
 
 ## Структура
