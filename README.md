@@ -34,7 +34,7 @@
 | [ADR-0009](https://bz.incdb.team/pages/viewpage.action?pageId=3424485731) | Интеграция Pyrus и Correct для распознавания документов | Accepted |
 | [ADR-0010](https://bz.incdb.team/pages/viewpage.action?pageId=3429498897) | Device2Host интеграция с вендором процессинга | Accepted |
 | [ADR-0011](https://bz.incdb.team/pages/viewpage.action?pageId=3442704420) | rf bypass – gateway доступа к зарубежным ресурсам, заблокированным по GeoIP | Implemented |
-| [ADR-0012](https://bz.incdb.team/pages/viewpage.action?pageId=3448995848) | Корпоративный LLM Gateway — вывод в Production на платформе PSP Life Pay | Accepted |
+| [ADR-0012](https://bz.incdb.team/pages/viewpage.action?pageId=3448995848) | Корпоративный LLM Gateway — вывод в Production на платформе PSP Life Pay | Implemented |
 | [ADR-0013](https://bz.incdb.team/pages/viewpage.action?pageId=3451748373) | Аутентификация Global Platform | Accepted |
 | [ADR-0014](https://bz.incdb.team/pages/viewpage.action?pageId=3454599221) | Авторизация Global Platform | Accepted |
 
