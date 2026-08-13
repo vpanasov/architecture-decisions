@@ -2,7 +2,7 @@
 
 Локальный репозиторий RFC и ADR документов, синхронизированных из Confluence ([RFCs](https://bz.incdb.team/display/DOCS/RFCs?src=contextnavpagetreemode), [ADR's](https://bz.incdb.team/display/DOCS/ADR%27s?src=contextnavpagetreemode)).
 
-**Дата синхронизации:** 2026-06-29
+**Дата синхронизации:** 2026-08-13
 
 ---
 
@@ -23,6 +23,7 @@
 | [RFC-0018](https://bz.incdb.team/pages/viewpage.action?pageId=3442704389) | Корпоративный LLM Gateway — вывод в Production на платформе PSP Life Pay | APPROVED |
 | [RFC-0019](https://bz.incdb.team/pages/viewpage.action?pageId=3445882992) | Авторизация Global Platform | APPROVED |
 | [RFC-0020](https://bz.incdb.team/pages/viewpage.action?pageId=3445883026) | Аутентификация Global Platform | APPROVED |
+| [RFC-0022](https://bz.incdb.team/pages/viewpage.action?pageId=3453550606) | Межсервисная аутентификация (m2m) | APPROVED |
 
 ## ADRs (Architecture Decision Records)
 
@@ -37,6 +38,7 @@
 | [ADR-0012](https://bz.incdb.team/pages/viewpage.action?pageId=3448995848) | Корпоративный LLM Gateway — вывод в Production на платформе PSP Life Pay | Implemented |
 | [ADR-0013](https://bz.incdb.team/pages/viewpage.action?pageId=3451748373) | Аутентификация Global Platform | Accepted |
 | [ADR-0014](https://bz.incdb.team/pages/viewpage.action?pageId=3454599221) | Авторизация Global Platform | Accepted |
+| [ADR-0015](https://bz.incdb.team/pages/viewpage.action?pageId=3455483942) | Межсервисная аутентификация (m2m) | Accepted |
 
 ## Связи между документами
 
@@ -61,6 +63,9 @@ RFC-0018 → ADR-0012 (Корпоративный LLM Gateway — Production н�
 RFC-0020 → ADR-0013 (Аутентификация Global Platform — Keycloak как чистый IdP)
 RFC-0019 → ADR-0014 (Авторизация Global Platform — трёхслойная модель, Cerbos PDP)
   └── смежный с RFC-0020/ADR-0013 (authZ ↔ authN одной платформы)
+RFC-0022 → ADR-0015 (Межсервисная аутентификация m2m — Token Exchange, sidecar-агент)
+  ├── развивает RFC-0020 (заполняет отложенную нишу m2m)
+  └── дополняется RFC-0023 (атрибуция и делегирование, клейм act/LoginAs)
 ```
 
 ## Структура
@@ -79,10 +84,10 @@ architecture-decisions/
 ├── templates/
 │   └── adr-template.md
 ├── rfcs/
-│   ├── RFC-0001.md  — RFC-0016.md
+│   ├── RFC-0001.md  — RFC-0022.md
 │   └── images/
 ├── adrs/
-│   ├── ADR-0004.md, ADR-0007.md — ADR-0011.md
+│   ├── ADR-0004.md, ADR-0007.md — ADR-0015.md
 └── validate/
     └── report-rfc-XXXX.md
 ```
